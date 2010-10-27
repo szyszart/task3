@@ -8,6 +8,10 @@
         <%= f.text_area :content %>
 </p>
 <p>
+        <%= f.label :group %> <br />
+        <%= f.select(:group_id, @groups.collect{|g| [g.name, g.id]}) %>
+</p>
+<p>
         <%= f.submit 'Save' %>
 </p>
 

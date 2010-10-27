@@ -8,21 +8,30 @@ class Admin::ArticlesController < ApplicationController
 		if @article.save
 			redirect_to(admin_article_path(@article), :notice => 'Article was successfully created.')
 		else
-			render :action => "new"
+			@groups = Group.all
+			render :action => :new
 		end			
         end
 
         def new
                 @article = Article.new
+		@groups = Group.all
         end
 
         def show
 		@article = Article.find(params[:id])
+		group = Group.find(@article.group_id)
+		if group.nil?
+			@group_name = "unassigned"
+		else
+			@group_name = group.name
+		end
         end
 
 
 	def edit
 		@article = Article.find(params[:id])
+		@groups = Group.all
 	end
 
         def update
@@ -30,7 +39,8 @@ class Admin::ArticlesController < ApplicationController
 		if @article.update_attributes(params[:article])
 			redirect_to(admin_article_path(@article), :notice => 'Article was successfully updated.')
 		else
-			render :action => "edit"
+			@groups = Group.all
+			render :action => :edit
 		end						
         end
 

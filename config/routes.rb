@@ -1,9 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
+	admin.resource :groups do |g|
+		g.resources :articles do |a|
+			a.resources :comments
+		end
+	end
+
 	admin.resources :articles do |a|
 		a.resources :comments
 	end
-
 	admin.resources :comments
 	admin.root :controller => :articles, :action => :index
   end
