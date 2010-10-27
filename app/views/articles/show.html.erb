@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Showing &quot;<%= h @article.title -%>&quot;</title>
+	</head>
+	<body>
+		<p>
+			<%= link_to 'Return to the main page', articles_path %> |
+                </p>
+
+		<h1> <%= h @article.title -%> </h1>
+		<p> <%= h @article.content -%> </p>
+		<h2> Comments </h2>
+		<p>		
+			<%= link_to 'Add comment', new_article_comment_path(@article) %> 
+		</p>
+		
+		<% @article.comments.each do |a| %>
+			Written by <b> <%= h a.author %> </b>
+			<br />
+			<p> <%= h a.content %> </p>
+		<% end %>		
+	</body>
+</html>
