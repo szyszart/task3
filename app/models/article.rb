@@ -3,4 +3,14 @@ class Article < ActiveRecord::Base
 
 	validates_presence_of :title, :content
 	has_many :comments, :dependent => :destroy
+
+        def get_group_name
+                group = Group.find(group_id)
+                if group.nil?
+                        "unassigned"
+                else
+                        group.name
+                end
+        end
+
 end

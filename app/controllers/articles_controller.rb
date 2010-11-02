@@ -5,12 +5,7 @@ class ArticlesController < ApplicationController
 
         def show
 		@article = Article.find(params[:id])
- 		group = Group.find(@article.group_id)
-                if group.nil?
-                        @group_name = "unassigned"
-                else
-                        @group_name = group.name
-                end
+		@group_name = @article.get_group_name
         end
 end
 

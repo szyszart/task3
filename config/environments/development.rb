@@ -14,4 +14,18 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+# config.action_mailer.raise_delivery_errors = false
+
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto => true,
+ :address        => 'smtp.gmail.com',
+ :port           => 587,
+ :authentication => :plain,
+}
+
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_charset = "utf-8"
+

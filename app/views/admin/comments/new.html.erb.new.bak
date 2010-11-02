@@ -1,5 +1,5 @@
 <h1>Add a comment</h1> 
-<% form_for([:admin, @comment.article, @comment]) do |f| %>
+<% form_for([@comment.article, @comment]) do |f| %>
 <p> <%= f.error_messages %> </p>
 <p>
 	<%= f.label :author %> <br />

@@ -9,6 +9,21 @@ config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
+config.action_mailer.default_url_options = { :host => 'heroku.com' }
+### ActionMailer Config
+# Setup for production - deliveries, no errors raised
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_charset = "utf-8"
+
+config.action_mailer.smtp_settings = {
+ :enable_starttls_auto => true,
+ :address        => 'smtp.gmail.com',
+ :port           => 587,
+ :authentication => :plain,
+}
+
 # See everything in the log (default is :info)
 # config.log_level = :debug
 

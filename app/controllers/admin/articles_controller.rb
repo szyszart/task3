@@ -1,4 +1,6 @@
 class Admin::ArticlesController < ApplicationController
+	before_filter :authenticate_admin!
+
         def index
                 @articles = Article.all
         end
@@ -20,12 +22,7 @@ class Admin::ArticlesController < ApplicationController
 
         def show
 		@article = Article.find(params[:id])
-		group = Group.find(@article.group_id)
-		if group.nil?
-			@group_name = "unassigned"
-		else
-			@group_name = group.name
-		end
+		@group_name = @article.get_group_name
         end
 
 

@@ -1,10 +1,10 @@
-<h1>List of articles written so far</h1>
-<hr />
+<h1>List of articles written so far:</h1>
 <%= link_to 'Create a new article', :action => 'new' %>
 <% @articles.each do |article| %>
 <h2> <%= link_to (h article.title), admin_article_path(article) %> </h2>
 <p> <%= h article.content %> </p>
 <p>
+        from: <b><%= h article.get_group_name -%></b> |
 	<%= link_to 'Edit', edit_admin_article_path(article) %> |
 	<%= link_to 'Delete', admin_article_path(article), :method => :delete %> |
 	<%= link_to 'Show more', admin_article_path(article) %>

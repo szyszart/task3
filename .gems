@@ -1,0 +1,1 @@
+devise --version '1.0.3' --source http://gemcutter.org

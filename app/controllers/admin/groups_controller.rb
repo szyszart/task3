@@ -1,4 +1,5 @@
 class Admin::GroupsController < ApplicationController
+	before_filter :authenticate_admin!
         def create
                 @group = Group.new(params[:group])
 		if @group.save
