@@ -7,6 +7,7 @@
 	<body>
 		<p>
 			<b>This is admin mode.</b>
+			You are logged is as <b><%= current_admin.email -%></b>.
 			Click <%= link_to 'here', destroy_admin_session_path %> to sign off.
 		</p>
 		<hr />

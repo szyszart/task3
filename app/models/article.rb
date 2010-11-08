@@ -13,4 +13,7 @@ class Article < ActiveRecord::Base
                 end
         end
 
+	def get_author_name
+		Admin.find(author_id).email
+	end
 end

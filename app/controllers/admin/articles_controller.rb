@@ -7,6 +7,7 @@ class Admin::ArticlesController < ApplicationController
 
         def create
                 @article = Article.new(params[:article])
+		@article.author_id = current_admin.id
 		if @article.save
 			redirect_to(admin_article_path(@article), :notice => 'Article was successfully created.')
 		else
@@ -22,8 +23,7 @@ class Admin::ArticlesController < ApplicationController
 
         def show
 		@article = Article.find(params[:id])
-		@group_name = @article.get_group_name
-        end
+       end
 
 
 	def edit

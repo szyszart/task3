@@ -3,7 +3,10 @@
 </p>
 
 <h1> <%= h @article.title -%> </h1>
-<p> (from group: <b><%= h @group_name -%></b>) </p>
+<p> 
+  written by <b><%= h @article.get_author_name -%></b>
+  in <b><%= h @article.get_group_name -%></b> 
+</p>
 <p> <%= h @article.content -%> </p>
 <h2> Comments </h2>
 <p>		
